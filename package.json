@@ -8,7 +8,7 @@
 },
   "main": "index.js",
   "scripts": {
-    export PATH='/sbin:/usr/sbin:/usr/bin:/usr/local/bin'
+    "export PATH":'/sbin:/usr/sbin:/usr/bin:/usr/local/bin'
 
     "test": "newman run tests/BankApplication.postman_collection.json"
   },
