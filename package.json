@@ -1,0 +1,18 @@
+{
+
+  "name": "bankapp",
+  "version": "1.0.0",
+  "description": "bank application spring boot",
+"directories":{
+"test":"tests"
+},
+  "main": "index.js",
+  "scripts": {
+    "test": "newman run tests/BankApplication.postman_collection.json"
+  },
+  "author": "prashant nikam",
+  "license": "ISC",
+  "dependencies": {
+    "newman": "^4.5.4"
+  }
+}

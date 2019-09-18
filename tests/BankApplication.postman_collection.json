@@ -1,0 +1,650 @@
+{
+	"info": {
+		"_postman_id": "f55dcad7-b0e6-4e49-9bb4-9a36201bd350",
+		"name": "BankApplication",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GET",
+			"item": [
+				{
+					"name": "Validate With Invalid Details",
+					"item": [
+						{
+							"name": "Check Invalid Customer Details",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": ""
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "getValidAccountsUsingFuture",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "7b9476e6-a500-47ff-b6fc-bbf720bc22db",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "a6c71ba6-fb42-49cb-931e-d6050197512c",
+								"exec": [
+									"",
+									"",
+									"",
+									"pm.test(\"Response time is less than 200ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);",
+									"});",
+									"pm.test(\"Content-Type is present\", function () {",
+									"    pm.response.to.have.header(\"Content-Type\");",
+									"});",
+									"",
+									"pm.test(\"Response time check\", function () {",
+									"        console.log(\"Response Time is:\"+pm.globals.get(\"Response_Time\"));",
+									"",
+									"    pm.expect(pm.response.responseTime).to.be.below(Number(pm.globals.get(\"Response_Time\")));",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8094/customers/streams?branch=baner&accountType=saving&baseAmount=10000",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8094",
+							"path": [
+								"customers",
+								"streams"
+							],
+							"query": [
+								{
+									"key": "branch",
+									"value": "baner"
+								},
+								{
+									"key": "accountType",
+									"value": "saving"
+								},
+								{
+									"key": "baseAmount",
+									"value": "10000"
+								}
+							]
+						},
+						"description": "get the valid account details of particular branch and particular account type"
+					},
+					"response": []
+				},
+				{
+					"name": "getValidAccountsUsingStreams",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8094/customers/streams?branch=baner&accountType=saving&baseAmount=10000",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8094",
+							"path": [
+								"customers",
+								"streams"
+							],
+							"query": [
+								{
+									"key": "branch",
+									"value": "baner"
+								},
+								{
+									"key": "accountType",
+									"value": "saving"
+								},
+								{
+									"key": "baseAmount",
+									"value": "10000"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getValidAccountsUsingparallelStreams",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8094/customers/parallel?branch=baner&accountType=saving&baseAmount=10000",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8094",
+							"path": [
+								"customers",
+								"parallel"
+							],
+							"query": [
+								{
+									"key": "branch",
+									"value": "baner"
+								},
+								{
+									"key": "accountType",
+									"value": "saving"
+								},
+								{
+									"key": "baseAmount",
+									"value": "10000"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAllCustomerDetails",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8094/customers",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8094",
+							"path": [
+								"customers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "findCustomerByFirstName",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8094/customers/firstName?firstName=prahant",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8094",
+							"path": [
+								"customers",
+								"firstName"
+							],
+							"query": [
+								{
+									"key": "firstName",
+									"value": "prahant"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getCustomerDetail",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "fb2df596-77b1-4b38-9bb7-0d1cfd161e68",
+								"exec": [
+									"var result = {",
+									"",
+									"   \"customerName\":\"prashant\",",
+									"    \"address\": {",
+									"        \"flatNo\": 2,",
+									"        \"landmark\": \"near iris\",",
+									"        \"city\": \"pune\",",
+									"        \"pincode\": 411045,",
+									"        \"addressId\": 2513",
+									"    },",
+									"    \"accounts\": [",
+									"        {",
+									"            \"branch\": \"baner\",",
+									"            \"accountType\": \"saving\",",
+									"            \"baseAmount\": 7899987.0,",
+									"            \"accountId\": 2513",
+									"        }",
+									"    ]",
+									"",
+									"}",
+									"",
+									"pm.test(\"Test status code\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.status).to.be.eql(result.status);",
+									"});",
+									"pm.test(\"Test customerName is present \", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.have.property(\"customerName\");",
+									"});",
+									"pm.test(\"Test customer address is present\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.have.property(\"address\");",
+									"});",
+									"pm.test(\"check customerName is prashant:\",function()",
+									"{",
+									"    var jsonData=pm.response.json();",
+									"    pm.expect(jsonData.customerName).to.be.eql(\"janki\");",
+									"});",
+									"pm.test(\"Test data whether account is not empty\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.have.property(\"accounts\");",
+									"    pm.expect(jsonData.accounts.length).not.eql(0);",
+									"});",
+									"",
+									"pm.test(\"Response time check\", function () {",
+									"        console.log(\"Response Time is:\"+pm.globals.get(\"Response_Time\"));",
+									"",
+									"    pm.expect(pm.response.responseTime).to.be.below(Number(pm.globals.get(\"Response_Time\")));",
+									"});",
+									"",
+									"",
+									"pm.test(\"Successful GET request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200]);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/customers/4",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"customers",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "POST",
+			"item": [
+				{
+					"name": "http://localhost:8094/customers",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "7612ff9c-5ed9-4460-b2ca-79edcc890cd7",
+								"exec": [
+									"var result = {",
+									"",
+									"    \"customerName\":\"prashant\",",
+									"    \"address\": {",
+									"        \"flatNo\": 2,",
+									"        \"landmark\": \"near iris\",",
+									"        \"city\": \"pune\",",
+									"        \"pincode\": 411045,",
+									"        \"addressId\": 2513",
+									"    },",
+									"    \"accounts\": [",
+									"        {",
+									"            \"branch\": \"baner\",",
+									"            \"accountType\": \"saving\",",
+									"            \"baseAmount\": 7899987.0,",
+									"            \"accountId\": 2513",
+									"        }",
+									"    ]",
+									"",
+									"",
+									"}",
+									"pm.test(\"Test status code\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.status).to.be.eql(result.status);",
+									"});",
+									"pm.test(\"Test customerName is present \", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.have.property(\"customerName\");",
+									"});",
+									"pm.test(\"Test customer address is present\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.have.property(\"address\");",
+									"});",
+									"pm.test(\"check customerName is prashant:\",function()",
+									"{",
+									"    var jsonData=pm.response.json();",
+									"    pm.expect(jsonData.customerName).to.be.eql(\"prashant\");",
+									"});",
+									"pm.test(\"Test data whether account is not empty\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.have.property(\"accounts\");",
+									"    pm.expect(jsonData.accounts.length).not.eql(0);",
+									"});",
+									"",
+									"pm.test(\"Response time check\", function () {",
+									"        console.log(\"Response Time is:\"+pm.globals.get(\"Response_Time\"));",
+									"",
+									"    pm.expect(pm.response.responseTime).to.be.below(Number(pm.globals.get(\"Response_Time\")));",
+									"});",
+									"",
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200,201,202]);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Observable_Time",
+								"value": "{{Observable_TIme}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"customerName\": \"prashant\",\n\n\"address\":\n{\n\t\"flatNo\": 2,\n        \"landmark\": \"near iris\",\n        \"city\": \"pune\",\n        \"pincode\": 411045\n},\n\n\"accounts\":[{\n\t\"branch\":\"baner\",\n\t\"accountType\":\"saving\",\n\t\"baseAmount\":7899987\n\t\n}\n\t\n\t]\n\n}"
+						},
+						"url": {
+							"raw": "{{url}}/customers",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"customers"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "PUT",
+			"item": [
+				{
+					"name": "updateCustomerDetails",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "6bef2105-2e7f-47d0-a63d-c7697dc7c1b6",
+								"exec": [
+									"var result = {",
+									"",
+									"   \"customerName\":\"shivam\",",
+									"    \"address\": {",
+									"        \"flatNo\": 2,",
+									"        \"landmark\": \"near iris\",",
+									"        \"city\": \"pune\",",
+									"        \"pincode\": 411045,",
+									"        \"addressId\": 2513",
+									"    },",
+									"    \"accounts\": [",
+									"        {",
+									"            \"branch\": \"baner\",",
+									"            \"accountType\": \"saving\",",
+									"            \"baseAmount\": 7899987.0,",
+									"            \"accountId\": 2513",
+									"        }",
+									"    ]",
+									"",
+									"",
+									"}",
+									"pm.test(\"Test status code\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.status).to.be.eql(result.status);",
+									"});",
+									"pm.test(\"Test customerName is present \", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.have.property(\"customerName\");",
+									"});",
+									"pm.test(\"Test customer address is present\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.have.property(\"address\");",
+									"});",
+									"pm.test(\"check customerName is shivam:\",function()",
+									"{",
+									"    var jsonData=pm.response.json();",
+									"    pm.expect(jsonData.customerName).to.be.eql(\"shivam\");",
+									"});",
+									"pm.test(\"Test data whether account is not empty\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.have.property(\"accounts\");",
+									"    pm.expect(jsonData.accounts.length).not.eql(0);",
+									"});",
+									"",
+									"pm.test(\"Response time check\", function () {",
+									"        console.log(\"Response Time is:\"+pm.globals.get(\"Response_Time\"));",
+									"    pm.expect(pm.response.responseTime).to.be.below(Number(pm.globals.get(\"Response_Time\")));",
+									"});",
+									"",
+									"",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"customerName\": \"shivam\",\n\n\"address\":\n{\n\t\"flatNo\": 2,\n        \"landmark\": \"near iris\",\n        \"city\": \"pune\",\n        \"pincode\": 411045\n},\n\n\"accounts\":[{\n\t\"branch\":\"baner\",\n\t\"accountType\":\"saving\",\n\t\"baseAmount\":7899987\n\t\n}\n\t\n\t]\n\n}"
+						},
+						"url": {
+							"raw": "{{url}}/customers/3",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"customers",
+								"3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "DELETE",
+			"item": [
+				{
+					"name": "validate with Non Exist Record",
+					"item": [
+						{
+							"name": "Provided Invalid Customer id for Deletion",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": ""
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "deleteCustomerDetails",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "17e873a6-be71-4092-8cb7-bd0105a68f0c",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/customers/6",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"customers",
+								"6"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "e3fa556c-2b58-4177-a1be-67893e60fe31",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "b5a020bc-0227-49cc-bead-b63902976555",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "331a503d-045f-405a-a2ab-b834594bd153",
+			"key": "Observable_TIme",
+			"value": "1000",
+			"type": "string"
+		},
+		{
+			"id": "7ed0f70b-9850-4b3f-9bca-42eb3b04126e",
+			"key": "url",
+			"value": "http://localhost:8094",
+			"type": "string"
+		}
+	]
+}
